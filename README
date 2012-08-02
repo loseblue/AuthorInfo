@@ -1,3 +1,19 @@
+/*=============================================================================
+#     FileName: README
+#         Desc: 
+#       Author: loseblue
+#        Email: loseblue@163.com
+#      Version: 0.0.1
+#   LastChange: 2012-08-02 16:00:29
+#      History:
+=============================================================================*/
+
+This is a Fork of https://github.com/vim-scripts/AuthorInfo
+
+* move AuthorInfo.vim from ftplugin to plugin so make AuthorInfo work well!
+
+=============================== Old infomation ==========================================
+
 This is a mirror of http://www.vim.org/scripts/script.php?script_id=2902
 
 You can add your author info in any source files,such as cpp,c,java,and c#,python,php,bash....
