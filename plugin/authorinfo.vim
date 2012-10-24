@@ -3,8 +3,8 @@
 "  Email:           zny2008@gmail.com
 "  FileName:        authorinfo.vim
 "  Description:     
-"  Version:         1.5
-"  LastChange:      2011-02-23 16:42:42
+"  Version:         1.6
+"  LastChange:      2012-10-24 15:10:54
 "  History:         support bash's #!xxx
 "                   fix bug for NerdComment's <leader>
 "=============================================================================
@@ -30,7 +30,6 @@ function! g:CheckFileType(type)
     endif
 endfunction
 function s:DetectFirstLine()
-    "跳转到指定区域的第一行，开始操作
     exe 'normal '.1.'G'
     let arrData = [
                 \['sh',['^#!.*$']],
@@ -55,7 +54,6 @@ function s:DetectFirstLine()
             break
         endif
         normal j
-        "到了最后一行了，所以直接o就可以了
         if oldNum == line('.')
             normal o
             return
@@ -86,9 +84,7 @@ function s:AfterTitle()
     endfor
 endfunction
 function s:AddTitle()
-    "检查开始插入作者信息的行
     call s:DetectFirstLine()
-    "判断是否支持多行注释
     let hasMul = 0
     let preChar = ''
     let noTypeChar = ''
@@ -109,7 +105,6 @@ function s:AddTitle()
         endif
     endif
 
-    "在第一行之前做的事情
     call s:BeforeTitle()
 
     let firstLine = line('.')
@@ -135,7 +130,6 @@ function s:AddTitle()
     call setline('.',noTypeChar.'=============================================================================')
     let lastLine = line('.')
 
-    "在最后一行之后做的事情
     call s:AfterTitle()
 
     if hasMul == 1
@@ -152,7 +146,6 @@ function s:TitleDet()
     silent! normal ms
     let updated = 0
     let n = 1
-    "默认为添加
     while n < 20
         let line = getline(n)
         if line =~ '^.*FileName:\S*.*$'
